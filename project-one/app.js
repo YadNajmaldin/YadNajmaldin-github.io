@@ -1,21 +1,35 @@
-// const baseURL = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=wyCbR5lOQSmtnWopRJweC3FIHDJbnH1NrjFKZaas'
+//https://api.nal.usda.gov/fdc/v1/foods/search?api_key=DEMO_KEY&query=Cheddar%20Cheese
 
-const baseURL = 'https://api.nal.usda.gov/fdc/v1/foods/list?api_key=wyCbR5lOQSmtnWopRJweC3FIHDJbnH1NrjFKZaas'
+const baseURL = 'https://api.nal.usda.gov/fdc/v1/foods/search?api_key=wyCbR5lOQSmtnWopRJweC3FIHDJbnH1NrjFKZaas'
+
+const queryURL = baseURL +"&query=" + name; 
 
 const getData = () => {
     $.ajax({
       method: 'GET' ,
-      url: baseURL
+      url: queryURL,
 
-    }).then((data) => {
-      console.log(data);
+    }).done((data)=>{
+        for (let i=0 ; i <data.foods.length; i++){
+           
+           for(let j=0 ; j < data.foods[i].foodNutrients.length ; j++){
+                 let divI = $(`<div> -  ${data.foods[i].foodNutrients[j].nutrientName} : ${data.foods[i].foodNutrients[j].nutrientNumber}</div> `)
+                 $('.info').append(divI);
+               
+           }
         
-    }), (error) => {
-      console.error(error)
-    }
-} 
-  
+            }
+        
+            }) 
+        }
+       
   
   $(()=> {
-    getData()
-  })
+    $('form').on('submit', (event) => {
+        event.preventDefault()
+        name = $('input[type="text"]').val()
+        getData()
+    })
+  });
+
+// empty out the inpu
