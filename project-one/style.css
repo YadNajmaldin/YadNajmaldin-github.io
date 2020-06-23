@@ -7,6 +7,7 @@ body {
     text-align: center;
     color: rgb(202, 199, 191);
     background: rgb(100, 99, 98);
+    font-size: 2rem;
 }
 
 .background {
@@ -17,9 +18,7 @@ body {
     background-position: top;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
-    margin-top: 0;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    justify-content: center;    
 }
 h1 {
     font-family: 'Tillana', cursive;
@@ -29,27 +28,53 @@ h1 {
 }
 .search-box {
     position: absolute;
+    padding-right: 150px;
     top: 50%;
     left: 50%;
     transform: translate(-50%);
 }
 .search-box input[type="text"]{
+    font-size: 1rem;
     width: 150%;
     padding: 10px;
+    color: rgb(202, 199, 191);
     background: rgba(0, 0, 0, 0.5);
     border: 3px solid rgb(202, 199, 191);
     border-radius: 5px;
-
-
+}
+::-webkit-input-placeholder{
+    color: rgb(202, 199, 191);
 }
 .search-button {
     font-family: 'Tillana', cursive;
     background: rgb(202, 199, 191);
-    width: 161%;
+    width: 158%;
     border-radius: 5px;
     border-color: rgb(153, 105, 3);
 
 }
 
 
-@media screen and (max-width: 500px)
+@media screen and (max-width: 425px){
+    .search-box{
+        width: 50%;
+        padding-right: 100px;
+    }
+    .background{
+    position: center;
+    background-size: cover;
+    width: 110%;
+    }
+    h1 {
+        padding-left: 50px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .search-box{
+        padding-right: 125px;
+
+}
+
+/* source for CSS
+https://www.youtube.com/watch?v=AiGgSrjYSXw */
