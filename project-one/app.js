@@ -4,12 +4,13 @@ const baseURL = 'https://api.nal.usda.gov/fdc/v1/foods/search?api_key=wyCbR5lOQS
 
 
 let queryURL = baseURL +"&query=" + name; 
-
+// using ajax to requests data from a specified resource
 const getData = () => {
     $.ajax({
     method: 'GET' ,
     url: queryURL,
     }).done((data)=>{
+        //using loop and nested loop to iterate over the the object and array 
         for (let i=0 ; i <data.foods.length; i++){
             for(let j=0 ; j < data.foods[i].foodNutrients.length ; j++){
             let divI = $(`<div> -  ${data.foods[i].foodNutrients[j].nutrientName} : ${data.foods[i].foodNutrients[j].nutrientNumber}</div> `)
