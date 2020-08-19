@@ -1,1 +1,1 @@
-# YadNajmaldin.github.io
+# YadNajm.github.io
